@@ -10,19 +10,23 @@ import {
 
 const { width, height } = Dimensions.get("window");
 
-function BottomNav() {
+function BottomNav({ active, onNavigate }) {
   const menu = [
     { id: "1", name: "Home" },
     { id: "2", name: "Calendar" },
-    { id: "3", name: "center-btn" },
+    { id: "3", name: "Workout" },
     { id: "4", name: "Progress" },
     { id: "5", name: "Search" },
   ];
   return (
     <View style={styles.container}>
       {menu.map((item) =>
-        item.name === "center-btn" ? (
-          <TouchableOpacity key={item.id} style={styles.item}>
+        item.name === "Workout" ? (
+          <TouchableOpacity
+            key={item.id}
+            style={styles.item}
+            onPress={() => onNavigate("Workout")}
+          >
             <View style={styles.btn}>
               <Image
                 source={require("./assets/dumbbell.png")}
@@ -31,7 +35,11 @@ function BottomNav() {
             </View>
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity key={item.id} style={styles.item}>
+          <TouchableOpacity
+            key={item.id}
+            style={styles.item}
+            onPress={() => onNavigate(item.name)}
+          >
             <Text>{item.name}</Text>
           </TouchableOpacity>
         ),
