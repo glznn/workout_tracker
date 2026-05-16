@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     height: 38,
   },
   topMessage: {
-    fontFamily: "Helvetica Neue",
+    fontFamily: "Inter_700Bold",
     fontWeight: "bold",
     fontSize: 16,
     color: "white",
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   btnText: {
-    fontFamily: "Inter",
+    fontFamily: "Inter_700Bold",
     fontWeight: "semibold",
     fontSize: 16,
     color: "white",
