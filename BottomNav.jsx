@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: -20,
+    marginTop: -16,
   },
   dumbbell: {
     width: 35,

@@ -11,6 +11,8 @@ import {
 } from "react-native";
 
 const { width, height } = Dimensions.get("window");
+import Exercise from "./Exercise";
+import { excerciseData } from "./exerciseData";
 
 function Library() {
   const muscles = [
@@ -87,7 +89,7 @@ function Library() {
                 ]}
                 onPress={() => {
                   if (activeMethod === method.name) {
-                    setActiveMethod("");
+                    setActiveMethod(null);
                   } else {
                     setActiveMethod(method.name);
                   }
@@ -103,6 +105,24 @@ function Library() {
                 </Text>
               </TouchableOpacity>
             ))}
+          </View>
+        </ScrollView>
+        <ScrollView style={styles.exercises}>
+          <View style={styles.exercisesInner}>
+            {excerciseData
+              .filter(
+                (exercise) =>
+                  activeMethod === null || activeMethod === exercise.method,
+              )
+              .filter(
+                (exercise) =>
+                  activeMuscle === "All" || activeMuscle === exercise.muscle,
+              )
+              .map((exercise) => (
+                <View key={exercise.key}>
+                  <Exercise name={exercise.name} method={exercise.method} />
+                </View>
+              ))}
           </View>
         </ScrollView>
       </View>
@@ -157,7 +177,7 @@ const styles = StyleSheet.create({
     justifySelf: "start",
     justifyContent: "space-around",
     textWrap: "nowrap",
-    marginTop: "55",
+    marginTop: 55,
     paddingRight: 20,
   },
   muscle: {
@@ -210,6 +230,20 @@ const styles = StyleSheet.create({
   },
   methodTextActive: {
     color: "white",
+  },
+  exercises: {
+    position: "absolute",
+    top: height * 0.08,
+    left: width * 0.2,
+    height: height * 0.7,
+    width: width * 0.8,
+    padding: 20,
+  },
+  exercisesInner: {
+    gap: 10,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    paddingBottom: 100,
   },
 });
 
