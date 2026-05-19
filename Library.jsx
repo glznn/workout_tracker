@@ -24,17 +24,16 @@ function Library() {
     { id: 8, name: "Shoulders" },
   ];
   const methods = [
-    { id: 1, name: "All" },
-    { id: 2, name: "Barbell" },
-    { id: 3, name: "Bodyweight" },
-    { id: 4, name: "Cable" },
-    { id: 5, name: "Dumbbell" },
-    { id: 6, name: "Machine" },
-    { id: 7, name: "Smith Machine" },
+    { id: 1, name: "Barbell" },
+    { id: 2, name: "Bodyweight" },
+    { id: 3, name: "Cable" },
+    { id: 4, name: "Dumbbell" },
+    { id: 5, name: "Machine" },
+    { id: 6, name: "Smith Machine" },
   ];
 
   const [activeMuscle, setActiveMuscle] = useState("All");
-  const [activeMethod, setActiveMethod] = useState("All");
+  const [activeMethod, setActiveMethod] = useState(null);
 
   return (
     <View style={styles.container}>
@@ -86,7 +85,13 @@ function Library() {
                   styles.method,
                   activeMethod === method.name && styles.methodActive,
                 ]}
-                onPress={() => setActiveMethod(method.name)}
+                onPress={() => {
+                  if (activeMethod === method.name) {
+                    setActiveMethod("");
+                  } else {
+                    setActiveMethod(method.name);
+                  }
+                }}
               >
                 <Text
                   style={[
